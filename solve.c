@@ -19,7 +19,7 @@ char	*precision(struct s_lis *temp, char *str)
 	char	sign[2];
 
 	sign[0] = '\0';
-	if (temp->prec > -1 && temp->prec >= ft_strlen(str))
+	if (temp->prec > -1 && temp->prec >= (int)ft_strlen(str))
 	{
 		ret = ft_strnew(temp->prec - ft_strlen(str));
 		if (str[0] == '-' || str[0] == '+')
@@ -44,7 +44,7 @@ char	*width(struct s_lis *temp, char *str)
 	char	*ret;
 	int		i;
 
-	if (temp->width > -1 && temp->width > ft_strlen(str))
+	if (temp->width > -1 && temp->width > (int)ft_strlen(str))
 	{
 		ret = ft_strnew(temp->width - ft_strlen(str));
 		if (str[0] > 47 && str[0] < 58 && ft_memchr(temp->mod, ' ', 5) && \

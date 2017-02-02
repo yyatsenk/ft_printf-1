@@ -18,7 +18,7 @@ void	my(unsigned long long int value, int base, char *str, int *i)
 	char	*b;
 
 	b = "0123456789ABCDEF";
-	if (value >= base)
+	if (value >= (unsigned long long)base)
 		my(value / base, base, str, i);
 	str[(*i)++] = b[RET(value % base)];
 }

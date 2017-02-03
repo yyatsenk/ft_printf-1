@@ -6,7 +6,7 @@
 #    By: amusel <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 13:43:16 by amusel            #+#    #+#              #
-#    Updated: 2017/02/02 17:44:37 by amusel           ###   ########.fr        #
+#    Updated: 2017/02/03 16:57:12 by amusel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ SRC = ft_strlen.c ft_strdup.c ft_memset.c ft_bzero.c \
 	  ft_putnbr_fd.c ft_lstnew.c ft_lstdelone.c \
 	  ft_lstdel.c ft_lstadd.c ft_lstiter.c ft_lstmap.c \
 	  ft_strclen.c ft_cwords.c ft_strrev.c ft_bug.c \
-	  ft_printf.c solve.c flags.c ft_itoa_base_ll.c \
-	  manageflags.c ft_itoa_base_unsig.c help.c
+	  ft_itoa_base_unsig.c manageflags.c flags.c \
+	  ft_printf.c solve.c ft_itoa_base_ll.c help.c
 
 OBJ = $(SRC:.c=.o)
 NAME = libftprintf.a
@@ -35,7 +35,7 @@ NAME = libftprintf.a
 all: $(NAME)
 
 $(NAME):
-	gcc -c -Wall -Werror -Wextra  $(SRC) -I .
+	gcc -Wall -Wextra -Werror -c $(SRC) -I .
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 

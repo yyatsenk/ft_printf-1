@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/05 18:06:42 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/02 17:33:43 by amusel           ###   ########.fr       */
+/*   Updated: 2016/12/06 16:27:12 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,26 +53,27 @@ size_t			ft_putchar_fd(const uint32_t symbol, const int fd)
 	char	*rt;
 	size_t	ct;
 
-	if (symbol == 202)
-		return ((size_t)write(1, "�", 1));
+	ct = 1;
 	rt = ft_strnew(6);
-	ct = 0;
 	if (symbol <= BIT7)
 		rt[0] = symbol;
 	else if (symbol <= BIT11)
 	{
+		ct = 2;
 		rt[0] = ((symbol & 1984) >> 6) | 192;
 		rt[1] = (symbol & 63) | 128;
 	}
 	else if (symbol <= BIT16)
 	{
+		ct = 3;
 		rt[0] = ((symbol & 61440) >> 12) | 224;
 		rt[1] = ((symbol & 4032) >> 6) | 128;
 		rt[2] = (symbol & 63) | 128;
 	}
 	else
 		ft_putchar_fd_2(symbol, rt);
-	ct = write(fd, rt, sizeof(char)) + write(fd, &rt[1], ft_strlen(&rt[1]));
+	if (fd < 100)
+		ct = write(fd, rt, sizeof(char)) + write(fd, &rt[1], ft_strlen(&rt[1]));
 	ft_strdel(&rt);
 	return (ct);
 }

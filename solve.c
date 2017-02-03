@@ -106,21 +106,17 @@ char	*solvechar(va_list ap, struct s_lis *temp)
 char	*solve(va_list ap, struct s_lis *temp, char *ret)
 {
 	char	*buf;
-	int		i;
 	wchar_t *tmp;
 
-	i = -1;
 	tmp = (wchar_t *)malloc(sizeof(tmp) * 100);
-	if (temp->flag == 'S' || (temp->flag == 's' && temp->type[0] == 'l'))
+	if (temp->flag == 'S' || (temp->flag == 's' && temp->type[0] == 'l') || \
+		temp->flag == 'C' || (temp->flag == 'c' && temp->type[0] == 'l'))
 	{
-		temp->lsc = (wchar_t *)va_arg(ap, int *);
-		while (++i < temp->prec)
-			tmp[i] = temp->lsc[i];
-		if (i > 0)
-			temp->lsc = tmp;
-		temp->lscpoint = temp->j;
-		temp->lscwidth = temp->width;
-		temp->lscprec = temp->prec;
+		clcsls(ap, temp, tmp);
+		temp->ret += help(temp, ret);
+		ft_strclr(ret);
+		temp->flag = '\0';
+		temp->j = 0;
 		return (ret);
 	}
 	else if (ft_memchr("dDiuUoOxX", temp->flag, 9) > 0)

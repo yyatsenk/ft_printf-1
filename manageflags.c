@@ -74,11 +74,6 @@ char	*managesflags(va_list ap, struct s_lis *temp)
 		retchar[0] = va_arg(ap, int);
 		return (retchar);
 	}
-	else if (temp->type[0] == 'l')
-	{
-		retchar[0] = (char)va_arg(ap, int);
-		return (retchar);
-	}
 	if (ret == NULL)
 		ret = "(null)";
 	return (ret);

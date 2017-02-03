@@ -6,7 +6,7 @@
 #    By: amusel <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/22 13:43:16 by amusel            #+#    #+#              #
-#    Updated: 2017/02/03 17:10:29 by amusel           ###   ########.fr        #
+#    Updated: 2017/02/03 17:11:58 by amusel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ NAME = libftprintf.a
 all: $(NAME)
 
 $(NAME):
-	gcc -c -Wall -Wextra -Werror $(SRC)
+	gcc -c -Wall -Wextra -Werror $(SRC) -I libft.h -I ft_printf.h
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 

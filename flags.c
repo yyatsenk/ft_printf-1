@@ -90,16 +90,16 @@ int		manageintmod(char *str, int *i, char *ret, struct s_lis *temp)
 	static char	sign = '0';
 	static char oxsign = '0';
 
-	if (ft_memchr(temp->mod, '0', 5) && \
-	ft_memchr(temp->mod, '-', 5) == 0 && \
-	(temp->prec == -1 || temp->flag == 'c'))
+	if ((sign == '+' || sign == '-') && ft_memchr(temp->mod, '+', 5) == 0)
+		sign = '0';
+	if (flagsnorm(temp, str) != NULL)
 	{
 		if (str[0] == '-' || str[0] == '+')
 		{
 			sign = str[0];
 			str[0] = '0';
 		}
-		else if (ft_memchr("oOxX", temp->flag, 4) && \
+		if (ft_memchr("oOxX", temp->flag, 4) && \
 				ft_memchr(temp->mod, '#', 5) && str[1] != '0')
 		{
 			oxsign = str[1];

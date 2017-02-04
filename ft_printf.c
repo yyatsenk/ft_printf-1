@@ -5,27 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/24 15:35:17 by amusel            #+#    #+#             */
-/*   Updated: 2017/01/24 15:35:19 by amusel           ###   ########.fr       */
+/*   Created: 2017/02/04 14:12:49 by amusel            #+#    #+#             */
+/*   Updated: 2017/02/04 14:12:56 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		parsenumb(const char *p, int *i, struct s_lis *temp)
+void	parsenumb(va_list ap, const char *p, int *i, struct s_lis *temp)
 {
 	char	*str;
 	int		k;
-	int		mark;
 
-	mark = 0;
 	k = 0;
 	if (p[*i] == 46)
-	{
-		mark = 1;
 		(*i)++;
-	}
 	str = ft_strnew(ft_strlen(p) - (*i));
+	if (p[*i] == '*')
+	{
+		specflag(p, i, temp, ap);
+		return ;
+	}
 	while (p[(*i)] > 47 && p[(*i)] < 58)
 	{
 		str[k++] = p[(*i)];
@@ -33,14 +33,14 @@ int		parsenumb(const char *p, int *i, struct s_lis *temp)
 	}
 	(*i)--;
 	str[k] = '\0';
-	if (mark)
+	if ((p[(*i) - ft_strlen(str)]) == 46)
 		temp->prec = ft_atoi(str);
 	else
 		temp->width = ft_atoi(str);
-	return (0);
+	free(str);
 }
 
-int		parse2(const char *p, int *i, struct s_lis *temp)
+int		parse2(va_list ap, const char *p, int *i, struct s_lis *temp)
 {
 	int k;
 
@@ -56,8 +56,8 @@ int		parse2(const char *p, int *i, struct s_lis *temp)
 		if (temp->type[k] == 'h' || !(temp->type[k]))
 			temp->type[k] = p[*i];
 	}
-	else if ((p[*i] > 48 && p[*i] < 58) || p[*i] == 46)
-		parsenumb(p, i, temp);
+	else if ((p[*i] > 48 && p[*i] < 58) || p[*i] == 46 || p[*i] == '*')
+		parsenumb(ap, p, i, temp);
 	else
 		return (1);
 	return (0);
@@ -84,7 +84,7 @@ int		clrtemp(struct s_lis *temp, int k, char *ret)
 	return (-1);
 }
 
-int		parse(const char *p, int *i, struct s_lis *temp)
+int		parse(va_list ap, const char *p, int *i, struct s_lis *temp)
 {
 	int				k;
 	char			*str;
@@ -107,8 +107,8 @@ int		parse(const char *p, int *i, struct s_lis *temp)
 			if (ft_memchr(temp->mod, p[(*i)], 5) == 0)
 				temp->mod[k++] = p[*i];
 		}
-		else if (parse2(p, i, temp))
-			return (specflag(p, i, temp));
+		else if (parse2(ap, p, i, temp))
+			return (specflag(p, i, temp, NULL));
 	}
 	return (0);
 }
@@ -119,6 +119,7 @@ int		ft_printf(const char *restrict str, ...)
 	char			*ret;
 	struct s_lis	*temp;
 	va_list			ap;
+	int				k;
 
 	i = -1;
 	temp = (struct s_lis *)malloc(sizeof(temp) * 100);
@@ -132,9 +133,11 @@ int		ft_printf(const char *restrict str, ...)
 			ret[temp->j++] = str[i];
 			ret[temp->j] = '\0';
 		}
-		else if (parse(str, &i, temp) == 0 && i-- > -1)
+		else if (parse(ap, str, &i, temp) == 0 && i-- > -1)
 			ret = solve(ap, temp, ret);
 	}
 	va_end(ap);
-	return (clrtemp(temp, 0, ret));
+	k = clrtemp(temp, 0, ret);
+	clr(temp, ret);
+	return (k);
 }

@@ -48,6 +48,14 @@ static void		ft_putchar_fd_2(const uint32_t symbol, char *rt)
 	}
 }
 
+char			*fun(char *rt, const uint32_t symbol)
+{
+	rt[0] = ((symbol & 61440) >> 12) | 224;
+	rt[1] = ((symbol & 4032) >> 6) | 128;
+	rt[2] = (symbol & 63) | 128;
+	return (rt);
+}
+
 size_t			ft_putchar_fd(const uint32_t symbol, const int fd)
 {
 	char	*rt;
@@ -65,10 +73,8 @@ size_t			ft_putchar_fd(const uint32_t symbol, const int fd)
 	}
 	else if (symbol <= BIT16)
 	{
+		rt = fun(rt, symbol);
 		ct = 3;
-		rt[0] = ((symbol & 61440) >> 12) | 224;
-		rt[1] = ((symbol & 4032) >> 6) | 128;
-		rt[2] = (symbol & 63) | 128;
 	}
 	else
 		ft_putchar_fd_2(symbol, rt);

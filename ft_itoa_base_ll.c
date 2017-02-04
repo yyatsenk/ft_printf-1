@@ -27,9 +27,15 @@ char	*ft_itoa_base_ll(long long int value, long long int base)
 {
 	char	*str;
 	int		i;
+	char	*temp;
 
 	i = 0;
 	str = (char *)malloc(sizeof(str) * 40);
+	if (value < -9223372036854775807)
+	{
+		str = "-9223372036854775808";
+		return (str);
+	}
 	ft_strclr(str);
 	if (base < 2 || base > 16)
 		return (NULL);
@@ -37,7 +43,8 @@ char	*ft_itoa_base_ll(long long int value, long long int base)
 		str[i++] = '-';
 	func(base, value, str, &i);
 	str[i] = '\0';
-	if (ft_memchr("0123456789ABCDEF", str[i - 1], 16) == 0)
-		str[i - 1] = '8';
-	return (str);
+	temp = str;
+	str = NULL;
+	free(str);
+	return (temp);
 }

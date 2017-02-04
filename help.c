@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void			clcsls(va_list ap, struct s_lis *temp, wchar_t *tmp)
+void	clcsls(va_list ap, struct s_lis *temp, wchar_t *tmp)
 {
 	int i;
 
@@ -29,10 +29,31 @@ void			clcsls(va_list ap, struct s_lis *temp, wchar_t *tmp)
 	temp->lscpoint = temp->j;
 	temp->lscwidth = temp->width;
 	temp->lscprec = temp->prec;
+	tmp = NULL;
+	free(tmp);
 }
 
-int		specflag(const char *p, int *i, struct s_lis *temp)
+int		specflag(const char *p, int *i, struct s_lis *temp, va_list ap)
 {
+	if (p[*i] == '*' && p[(*i) - 1] == '.')
+	{
+		temp->prec = va_arg(ap, int);
+		if (temp->prec < 0)
+			temp->prec = -1;
+		return (0);
+	}
+	else if (p[*i] == '*')
+	{
+		temp->width = va_arg(ap, int);
+		if (temp->width == 0)
+			temp->width = -1;
+		else if (temp->width < 0)
+		{
+			temp->width = -temp->width;
+			temp->mod[ft_strlen(temp->mod)] = '-';
+		}
+		return (0);
+	}
 	temp->specflag[0] = p[(*i)];
 	temp->specflag[1] = '\0';
 	if (temp->specflag[0] != '\0')
@@ -49,9 +70,9 @@ int		widthmanagelsc(struct s_lis *temp)
 
 	j = 0;
 	i = 0;
-	while(temp->lsc[j] && (temp->lscprec == -1 || \
-		(int)ft_putchar_fd((const u_int32_t)temp->lsc[j++], 101) <= temp->lscprec - i))
-		i += (int) ft_putchar_fd((const u_int32_t) temp->lsc[j++], 101);
+	while (temp->lsc[j] && (temp->lscprec == -1 || \
+		(int)ft_putchar_fd(temp->lsc[j++], 101) <= temp->lscprec - i))
+		i += (int)ft_putchar_fd((const u_int32_t)temp->lsc[j++], 101);
 	if (i > temp->lscprec && temp->lscprec != -1)
 		i = temp->lscprec;
 	width = temp->lscwidth - i;
@@ -62,52 +83,31 @@ int		widthmanagelsc(struct s_lis *temp)
 
 int		lsc(struct s_lis *temp, char *ret)
 {
-	int i;
 	int k;
 	int width;
-	int flag;
 	int count;
 
 	width = 0;
 	count = 0;
 	k = 0;
-	i = 0;
 	if (temp->lsc == NULL)
 	{
 		ft_putstr(ret);
 		k = (int)ft_strlen(ret);
 		ft_putstr("(null)");
 		count += 6;
-		i = 1000;
 	}
 	else
 		width = widthmanagelsc(temp);
-	flag = width;
 	while (k <= temp->j)
 	{
-		if (k == temp->lscpoint && i != 1000)
-		{
-			while (width-- > 0 && ft_memchr(temp->mod, '-', 5) == 0)
-				write(1, " ", 1);
-			while ((temp->lsc[i] && (count < temp->lscprec || temp->lscprec == -1)) || \
-					((temp->flag == 'c' || temp->flag == 'C') && count == 0))
-			{
-				if ((int)ft_putchar_fd((const u_int32_t)temp->lsc[i++], 101) <= temp->lscprec - count || \
-						temp->lscprec == -1 || temp->flag == 'C')
-				{
-					i--;
-					count += (int) ft_putchar_fd((const u_int32_t) temp->lsc[i++], 1);
-				}
-			}
-		}
+		if (count != 6)
+			count = lsc2(temp, k, 0, width);
 		if (ret[k] > 0)
 			ft_putchar(ret[k]);
 		k++;
 	}
-	width++;
-	while (width-- > 0 && ft_memchr(temp->mod, '-', 5))
-		write(1, " ", 1);
-	return (flag + count + (int)ft_strlen(ret));
+	return (width + count + (int)ft_strlen(ret));
 }
 
 int		help(struct s_lis *temp, char *ret)
@@ -119,8 +119,7 @@ int		help(struct s_lis *temp, char *ret)
 		temp->flag == 'C' || (temp->flag == 'c' && temp->type[0] == 'l'))
 		return (lsc(temp, ret));
 	else if (ft_memchr(temp->mod, '-', 5) == 0 && \
-			(temp->prec == -1 || temp->flag == 'c') && \
-			temp->width > -1)
+			(temp->prec == -1 || temp->flag == 'c') && temp->width > -1)
 		temp->c = temp->c + temp->width - 1;
 	if ((int)ft_strlen(ret) == '\0' && temp->flag == '\0')
 		return (temp->ret);
@@ -134,9 +133,6 @@ int		help(struct s_lis *temp, char *ret)
 		}
 		return ((int)ft_strlen(ret) + 1 + temp->ret);
 	}
-	else
-	{
-		ft_putstr(ret);
-		return ((int)ft_strlen(ret) + temp->ret);
-	}
+	ft_putstr(ret);
+	return ((int)ft_strlen(ret) + temp->ret);
 }

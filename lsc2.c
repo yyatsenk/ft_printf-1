@@ -43,17 +43,12 @@ int		lsc2(struct s_lis *temp, int k, int i, int width)
 
 char	*solvenorm(struct s_lis *temp, char *ret, char *str)
 {
-	char *tmp;
-
 	if (ft_memchr(temp->mod, '-', 5) > 0 || (temp->flag == 'p' && \
 		ft_memchr(temp->mod, '0', 5)))
 		ret = ft_strjoin(str, ret);
 	else
 		ret = ft_strjoin(ret, str);
-	tmp = ret;
-	ret = NULL;
-	free(ret);
-	return (tmp);
+	return (ret);
 }
 
 char	*flagsnorm(struct s_lis *temp, char *str)

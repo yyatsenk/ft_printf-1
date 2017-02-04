@@ -138,6 +138,6 @@ int		ft_printf(const char *restrict str, ...)
 	}
 	va_end(ap);
 	k = clrtemp(temp, 0, ret);
-	clr(temp, ret);
+	clr(temp);
 	return (k);
 }

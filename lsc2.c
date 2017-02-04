@@ -61,9 +61,8 @@ char	*flagsnorm(struct s_lis *temp, char *str)
 		return (NULL);
 }
 
-void	clr(struct s_lis *temp, char *ret)
+void	clr(struct s_lis *temp)
 {
-	free(ret);
 	temp = NULL;
 	free(temp);
 }

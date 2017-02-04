@@ -27,7 +27,6 @@ char	*ft_itoa_base_ll(long long int value, long long int base)
 {
 	char	*str;
 	int		i;
-	char	*temp;
 
 	i = 0;
 	str = (char *)malloc(sizeof(str) * 40);
@@ -43,8 +42,5 @@ char	*ft_itoa_base_ll(long long int value, long long int base)
 		str[i++] = '-';
 	func(base, value, str, &i);
 	str[i] = '\0';
-	temp = str;
-	str = NULL;
-	free(str);
-	return (temp);
+	return (str);
 }

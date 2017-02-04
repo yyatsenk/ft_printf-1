@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 14:12:49 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/04 16:50:45 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/04 16:51:19 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int		parse2(va_list ap, const char *p, int *i, struct s_lis *temp)
 		if (temp->type[k] == 'h' || !(temp->type[k]))
 			temp->type[k] = p[*i];
 	}
-	else if ((p[*i] > 48 && p[*i] < 58) || p[*i] == 46 || p[*i] == '*')
-		parsenumb(ap, p, i, temp);
+//	else if ((p[*i] > 48 && p[*i] < 58) || p[*i] == 46 || p[*i] == '*')
+//		parsenumb(ap, p, i, temp);
 	else
 		return (1);
 	return (0);

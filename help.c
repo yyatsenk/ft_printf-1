@@ -29,8 +29,6 @@ void	clcsls(va_list ap, struct s_lis *temp, wchar_t *tmp)
 	temp->lscpoint = temp->j;
 	temp->lscwidth = temp->width;
 	temp->lscprec = temp->prec;
-	tmp = NULL;
-	free(tmp);
 }
 
 int		specflag(const char *p, int *i, struct s_lis *temp, va_list ap)

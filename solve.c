@@ -60,7 +60,6 @@ char	*precision(struct s_lis *temp, char *str)
 		ret[i] = '0';
 	ret = ft_strjoin(ret, str);
 	ret = ft_strjoin(sign, ret);
-	free(sign);
 	return (ret);
 }
 

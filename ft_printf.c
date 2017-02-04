@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 14:12:49 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/04 16:49:23 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/04 16:50:45 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	parsenumb(va_list ap, const char *p, int *i, struct s_lis *temp)
 	}
 	(*i)--;
 	str[k] = '\0';
-	if ((p[(*i) - ft_strlen(str)]) == 46)
-		temp->prec = ft_atoi(str);
+//	if ((p[(*i) - ft_strlen(str)]) == 46)
+//		temp->prec = ft_atoi(str);
 //	else
 //		temp->width = ft_atoi(str);
 	free(str);

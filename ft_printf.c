@@ -122,8 +122,7 @@ int		ft_printf(const char *restrict str, ...)
 	int				k;
 
 	i = -1;
-	if (!(temp = (struct s_lis *)malloc(sizeof(temp) * 33)))
-		return (-1);
+	temp = (struct s_lis *)malloc(sizeof(temp) * 33);
 	temp->j = 0;
 	ret = (ft_strnew(ft_strlen(str)));
 	va_start(ap, str);

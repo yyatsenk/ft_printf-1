@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:03:55 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/05 18:12:18 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/05 18:16:11 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ char	*solve(va_list ap, struct s_lis *temp, char *ret)
 {
 	char	*buf;
 	wchar_t *tmp;
+	char 	*t;
 
 	tmp = (wchar_t *)malloc(sizeof(tmp) * 100);
 	if (temp->flag == 'S' || (temp->flag == 's' && temp->type[0] == 'l') || \
@@ -133,7 +134,10 @@ char	*solve(va_list ap, struct s_lis *temp, char *ret)
 		buf = solveint(ap, temp, "", "");
 	else
 		buf = solvechar(ap, temp);
-//	ret = ft_strjoin(ret, buf);
+	t = ft_strjoin(ret, buf);
+	ret = NULL;
+	free(ret);
+	ret = t;
 	temp->j = (int)ft_strlen(ret);
 	return (ret);
 }

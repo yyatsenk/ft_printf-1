@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:03:55 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/05 18:27:46 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/05 18:31:04 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,13 @@ char	*solve(va_list ap, struct s_lis *temp, char *ret)
 	ret = NULL;
 	free(ret);
 	ret = (char *)malloc(sizeof(ret) * (ft_strlen(t) + ft_strlen(buf) + 10));
-//	ret = ft_strjoin(t, buf);
+	int i = -1;
+	int j = -1;
+	while (t[++i])
+		ret[i] = t[i];
+	while (buf[++j])
+		ret[i++] = buf[j];
+	ret[i] = '\0';
 	temp->j = (int)ft_strlen(ret);
 	return (ret);
 }

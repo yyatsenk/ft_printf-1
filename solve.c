@@ -42,7 +42,7 @@ char	*precision(struct s_lis *temp, char *str)
 	char	*sign;
 
 	sign = (char *)malloc(sizeof(sign) * 10);
-	sign = ft_strclr(sign);
+	ft_strclr(sign);
 	if (temp->prec > -1 && temp->prec >= (int)ft_strlen(str))
 	{
 		ret = ft_strnew(temp->prec - ft_strlen(str));

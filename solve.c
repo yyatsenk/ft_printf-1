@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:03:55 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/05 17:52:33 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/05 17:53:42 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,18 +122,17 @@ char	*solve(va_list ap, struct s_lis *temp, char *ret)
 	if (temp->flag == 'S' || (temp->flag == 's' && temp->type[0] == 'l') || \
 		temp->flag == 'C' || (temp->flag == 'c' && temp->type[0] == 'l'))
 	{
-		clcsls(ap, temp, tmp);
-		temp->ret += help(temp, ret);
-		ft_strclr(ret);
+	//	clcsls(ap, temp, tmp);
+	//	temp->ret += help(temp, ret);
+	//	ft_strclr(ret);
 		temp->flag = '\0';
-		temp->j = 0;
+	//	temp->j = 0;
 		return (ret);
 	}
-	buf = '\0';
-//	else if (ft_memchr("dDiuUoOxX", temp->flag, 9) > 0)
-//		buf = solveint(ap, temp, "", "");
-//	else
-//		buf = solvechar(ap, temp);
+	else if (ft_memchr("dDiuUoOxX", temp->flag, 9) > 0)
+		buf = solveint(ap, temp, "", "");
+	else
+		buf = solvechar(ap, temp);
 	ret = ft_strjoin(ret, buf);
 	temp->j = (int)ft_strlen(ret);
 	return (ret);

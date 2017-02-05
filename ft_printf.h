@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/25 16:26:27 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/05 14:58:07 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/04 15:15:02 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,5 @@ void			clcsls(va_list ap, struct s_lis *temp, wchar_t *tmp);
 int				lsc2(struct s_lis *temp, int k, int i, int width);
 char			*solvenorm(struct s_lis *temp, char *ret, char *str);
 char			*flagsnorm(struct s_lis *temp, char *str);
+void			clr(struct s_lis *temp);
 #endif

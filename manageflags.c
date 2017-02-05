@@ -26,7 +26,7 @@ char	*manageoflags(va_list ap, struct s_lis *temp)
 	else if (temp->type[0] == 'l')
 		ret = ft_itoa_base_unsig(va_arg(ap, unsigned long int), 8);
 	else if (temp->type[0] == 'h')
-		ret = ft_itoa_base_unsig((unsigned short int)va_arg(ap, int), 8);
+		ret = ft_itoa_base_unsig((unsigned short)va_arg(ap, int), 8);
 	else if (temp->type[0] == 'j')
 		ret = ft_itoa_base_unsig(va_arg(ap, uintmax_t), 8);
 	else if (temp->type[0] == 'z')

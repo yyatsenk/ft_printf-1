@@ -79,7 +79,7 @@ char	*idu(va_list ap, struct s_lis *temp)
 		str[1] = '\0';
 	str = precision(temp, str);
 	ret = width(temp, str);
-	if ((temp->prec < 0) && \
+	if ((temp->prec < 0) && ret[0] != '-' && ret[0] != '+' && \
 	ft_memchr(temp->mod, 32, 5) && temp->flag != 'u' && temp->flag != 'U')
 		ret = ft_strjoin(" ", ret);
 	return (ret);

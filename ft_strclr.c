@@ -12,17 +12,22 @@
 
 #include "libft.h"
 
-void	ft_strclr(char *s)
+char	*ft_strclr(char *s)
 {
-	int i;
+	int		i;
+	char	*temp;
 
+	temp = NULL;
 	if (s)
 	{
-		i = ft_strlen(s);
+		i = (int)ft_strlen(s);
+		temp = (char *)malloc(sizeof(temp) * i);
 		while (i >= 0)
 		{
-			s[i] = '\0';
+			temp[i] = '\0';
 			i--;
 		}
 	}
+	s = temp;
+	return (s);
 }

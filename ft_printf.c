@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 14:12:49 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/04 16:52:01 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/05 12:23:57 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	parsenumb(va_list ap, const char *p, int *i, struct s_lis *temp)
 	}
 	(*i)--;
 	str[k] = '\0';
-//	if ((p[(*i) - ft_strlen(str)]) == 46)
-//		temp->prec = ft_atoi(str);
-//	else
-//		temp->width = ft_atoi(str);
+	if ((p[(*i) - ft_strlen(str)]) == 46)
+		temp->prec = ft_atoi(str);
+	else
+		temp->width = ft_atoi(str);
 	free(str);
 }
 
@@ -56,8 +56,8 @@ int		parse2(va_list ap, const char *p, int *i, struct s_lis *temp)
 		if (temp->type[k] == 'h' || !(temp->type[k]))
 			temp->type[k] = p[*i];
 	}
-//	else if ((p[*i] > 48 && p[*i] < 58) || p[*i] == 46 || p[*i] == '*')
-//		parsenumb(ap, p, i, temp);
+	else if ((p[*i] > 48 && p[*i] < 58) || p[*i] == 46 || p[*i] == '*')
+		parsenumb(ap, p, i, temp);
 	else
 		return (1);
 	return (0);
@@ -133,8 +133,8 @@ int		ft_printf(const char *restrict str, ...)
 			ret[temp->j++] = str[i];
 			ret[temp->j] = '\0';
 		}
-//		else if (parse(ap, str, &i, temp) == 0 && i-- > -1)
-//			ret = solve(ap, temp, ret);
+		else if (parse(ap, str, &i, temp) == 0 && i-- > -1)
+			ret = solve(ap, temp, ret);
 	}
 	va_end(ap);
 	k = clrtemp(temp, 0, ret);

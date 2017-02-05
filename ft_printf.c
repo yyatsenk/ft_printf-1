@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 14:12:49 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/05 15:06:54 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/05 15:08:25 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,8 @@ int		ft_printf(const char *restrict str, ...)
 			ret[temp->j++] = str[i];
 			ret[temp->j] = '\0';
 		}
-		else if (parse(ap, str, &i, temp) == 0 && i-- > -1)
-			ret = solve(ap, temp, ret);
+//		else if (parse(ap, str, &i, temp) == 0 && i-- > -1)
+//			ret = solve(ap, temp, ret);
 	}
 	va_end(ap);
 	k = clrtemp(temp, 0, ret);

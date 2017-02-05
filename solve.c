@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:03:55 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/05 17:59:25 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/05 18:02:16 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ char	*solve(va_list ap, struct s_lis *temp, char *ret)
 	wchar_t *tmp;
 
 	tmp = (wchar_t *)malloc(sizeof(tmp) * 100);
-	if (temp->flag == 'S' || (temp->flag == 's' && temp->type[0] == 'l') || \
-		temp->flag == 'C' || (temp->flag == 'c' && temp->type[0] == 'l'))
+	if (temp->flag == 'S' || (temp->flag == 's' && temp->type[0] == 'l'))// || \
+	//	temp->flag == 'C' || (temp->flag == 'c' && temp->type[0] == 'l'))
 	{
 		clcsls(ap, temp, tmp);
 		temp->ret += help(temp, ret);

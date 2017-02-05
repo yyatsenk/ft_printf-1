@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:03:55 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/05 17:20:37 by amusel           ###   ########.fr       */
+/*   Updated: 2017/01/29 14:04:05 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*precision(struct s_lis *temp, char *str)
 	char	*sign;
 
 	sign = (char *)malloc(sizeof(sign) * 10);
-	ft_strclr(sign);
+	sign = ft_strclr(sign);
 	if (temp->prec > -1 && temp->prec >= (int)ft_strlen(str))
 	{
 		ret = ft_strnew(temp->prec - ft_strlen(str));

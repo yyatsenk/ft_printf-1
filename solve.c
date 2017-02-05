@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:03:55 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/05 15:44:00 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/05 15:46:48 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char	*precision(struct s_lis *temp, char *str)
 		ret[i] = '0';
 	ret = ft_strjoin(ret, str);
 	ret = ft_strjoin(sign, ret);
+	free(sign);
 	return (ret);
 }
 

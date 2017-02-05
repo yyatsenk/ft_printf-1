@@ -26,7 +26,7 @@ char	*manageunflags(va_list ap, struct s_lis *temp)
 	else if (temp->type[0] == 'l')
 		ret = ft_itoa_base_unsig(va_arg(ap, unsigned long int), 10);
 	else if (temp->type[0] == 'h')
-		ret = ft_itoa_base_unsig(va_arg(ap, int), 10);
+		ret = ft_itoa_base_unsig((unsigned short)va_arg(ap, int), 10);
 	else if (temp->type[0] == 'j')
 		ret = ft_itoa_base_unsig(va_arg(ap, uintmax_t), 10);
 	else if (temp->type[0] == 'z')

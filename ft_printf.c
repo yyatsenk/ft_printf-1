@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 14:12:49 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/05 15:55:20 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/05 15:58:03 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int		ft_printf(const char *restrict str, ...)
 	int				k;
 
 	i = -1;
-	if (!(temp = (struct s_lis *)malloc(sizeof(temp) * 50)))
+	if (!(temp = (struct s_lis *)malloc(sizeof(temp) * 33)))
 		return (-1);
 	temp->j = 0;
 	ret = (ft_strnew(ft_strlen(str)));

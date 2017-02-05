@@ -66,3 +66,23 @@ void	clr(struct s_lis *temp)
 	temp = NULL;
 	free(temp);
 }
+
+char	*fucking(char *ret, char *buf)
+{
+	char	*t;
+	int		i;
+	int		j;
+
+	i = -1;
+	j = -1;
+	t = ret;
+	ret = NULL;
+	free(ret);
+	ret = (char *)malloc(sizeof(ret) * (ft_strlen(t) + ft_strlen(buf) + 10));
+	while (t[++i])
+		ret[i] = t[i];
+	while (buf[++j])
+		ret[i++] = buf[j];
+	ret[i] = '\0';
+	return (ret);
+}

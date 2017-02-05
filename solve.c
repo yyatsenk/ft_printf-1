@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:03:55 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/05 17:53:42 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/05 17:55:21 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ char	*solve(va_list ap, struct s_lis *temp, char *ret)
 		return (ret);
 	}
 	else if (ft_memchr("dDiuUoOxX", temp->flag, 9) > 0)
-		buf = solveint(ap, temp, "", "");
+		buf = "\0";
 	else
 		buf = solvechar(ap, temp);
 	ret = ft_strjoin(ret, buf);

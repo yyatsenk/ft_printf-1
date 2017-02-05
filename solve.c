@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:03:55 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/05 18:16:11 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/05 18:17:35 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,9 +135,6 @@ char	*solve(va_list ap, struct s_lis *temp, char *ret)
 	else
 		buf = solvechar(ap, temp);
 	t = ft_strjoin(ret, buf);
-	ret = NULL;
-	free(ret);
-	ret = t;
-	temp->j = (int)ft_strlen(ret);
-	return (ret);
+	temp->j = (int)ft_strlen(t);
+	return (t);
 }

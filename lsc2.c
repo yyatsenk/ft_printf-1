@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 20:11:22 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/03 20:11:24 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/05 14:56:59 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,4 @@ char	*flagsnorm(struct s_lis *temp, char *str)
 		return ("s");
 	else
 		return (NULL);
-}
-
-void	clr(struct s_lis *temp)
-{
-	temp = NULL;
-	free(temp);
 }

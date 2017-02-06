@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 20:11:22 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/06 14:45:38 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/06 14:46:21 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		lsc2(struct s_lis *temp, int k, int i, int width)
 	if (k == temp->lscpoint && i != 1000)
 	{
 		if (temp->lsc[0] > 127 && temp->flag == 'C')
-			return ((int)write(1, "ø", 1) + 1);
+			return ((int)write(1, "ø", 1) - 2);
 		while (width-- > 0 && ft_memchr(temp->mod, '-', 5) == 0 && \
 				ft_memchr(temp->mod, '0', 5))
 			write(1, "0", 1);

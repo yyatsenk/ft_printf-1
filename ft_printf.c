@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/04 14:12:49 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/06 15:03:37 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/06 15:04:30 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,6 @@ int		ft_printf(const char *restrict str, ...)
 	}
 	va_end(ap);
 	k = clrtemp(temp, 0, ret);
-	k = 0;
 	clr(temp);
-	return (100000);
+	return (k);
 }

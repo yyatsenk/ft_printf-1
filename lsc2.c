@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/03 20:11:22 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/03 20:11:24 by amusel           ###   ########.fr       */
+/*   Updated: 2017/02/06 14:36:37 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		lsc2(struct s_lis *temp, int k, int i, int width)
 		while (width-- > 0 && ft_memchr(temp->mod, '-', 5))
 			write(1, " ", 1);
 	}
-	return (count);
+	return (count - 2);
 }
 
 char	*solvenorm(struct s_lis *temp, char *ret, char *str)

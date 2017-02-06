@@ -6,7 +6,7 @@
 /*   By: amusel <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/29 14:55:16 by amusel            #+#    #+#             */
-/*   Updated: 2017/02/06 14:47:45 by amusel           ###   ########.fr       */
+/*   Updated: 2017/01/29 14:55:18 by amusel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,8 +108,6 @@ int		lsc(struct s_lis *temp, char *ret)
 			ft_putchar(ret[k]);
 		k++;
 	}
-	if (count < 0)
-		return (-1);
 	return (width + count + (int)ft_strlen(ret));
 }
 

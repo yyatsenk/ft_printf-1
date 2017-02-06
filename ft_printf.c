@@ -109,6 +109,8 @@ int		parse(va_list ap, const char *p, int *i, struct s_lis *temp)
 		}
 		else if (parse2(ap, p, i, temp))
 			return (specflag(p, i, temp, NULL));
+		if (p[*i] == 'n')
+			ap = 12;
 	}
 	return (0);
 }

@@ -115,7 +115,7 @@ int		help(struct s_lis *temp, char *ret)
 {
 	int i;
 
-	i = 0;
+	i = -1;
 	if (temp->flag == 'S' || (temp->flag == 's' && temp->type[0] == 'l'))
 		return (lsc(temp, ret));
 	else if (ft_memchr(temp->mod, '-', 5) == 0 && \
@@ -125,11 +125,12 @@ int		help(struct s_lis *temp, char *ret)
 		return (temp->ret);
 	if (temp->cflag > 0)
 	{
-		while (temp->j > i)
+		while (temp->j >= ++i)
 		{
 			if (temp->c == i)
 				ft_putchar('\0');
-			ft_putchar(ret[i++]);
+			if (ret[i])
+				ft_putchar(ret[i]);
 		}
 		return ((int)ft_strlen(ret) + 1 + temp->ret);
 	}

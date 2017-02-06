@@ -72,7 +72,6 @@ char	*managesflags(va_list ap, struct s_lis *temp)
 	else if ((temp->flag == 99 || temp->flag == 67))
 	{
 		retchar[0] = va_arg(ap, int);
-		retchar[1] = '\0';
 		ret = retchar;
 		retchar = NULL;
 		free(retchar);

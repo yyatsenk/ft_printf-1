@@ -19,8 +19,6 @@ int		lsc2(struct s_lis *temp, int k, int i, int width)
 	count = 0;
 	if (k == temp->lscpoint && i != 1000)
 	{
-		if (temp->lsc[0] == (wchar_t)"�")
-			return ((int)write(1, &temp->lsc[0], 1));
 		while (width-- > 0 && ft_memchr(temp->mod, '-', 5) == 0 && \
 				ft_memchr(temp->mod, '0', 5))
 			write(1, "0", 1);

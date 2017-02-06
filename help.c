@@ -116,7 +116,7 @@ int		help(struct s_lis *temp, char *ret)
 	int i;
 
 	i = 0;
-	if (temp->flag == 'S' || (temp->flag == 's' && temp->type[0] == 'l') || \
+	if (temp->flag == 'S' || (temp->flag == 's' && temp->type[0] == 'l'))// || \
 		temp->flag == 'C' || (temp->flag == 'c' && temp->type[0] == 'l'))
 		return (lsc(temp, ret));
 	else if (ft_memchr(temp->mod, '-', 5) == 0 && \

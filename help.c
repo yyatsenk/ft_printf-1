@@ -21,7 +21,7 @@ void	clcsls(va_list ap, struct s_lis *temp, wchar_t *tmp)
 		temp->lsc = (wchar_t *)va_arg(ap, int *);
 	if (temp->flag == 'C' || temp->flag == 'c')
 	{
-		tmp[0] = (wchar_t) va_arg(ap, int);
+		tmp[0] = (wchar_t)va_arg(ap, int);
 		tmp[1] = '\0';
 	}
 	if (temp->flag != 'C')
@@ -116,8 +116,7 @@ int		help(struct s_lis *temp, char *ret)
 	int i;
 
 	i = 0;
-	if (temp->flag == 'S' || (temp->flag == 's' && temp->type[0] == 'l'))// || \
-		temp->flag == 'C' || (temp->flag == 'c' && temp->type[0] == 'l'))
+	if (temp->flag == 'S' || (temp->flag == 's' && temp->type[0] == 'l'))
 		return (lsc(temp, ret));
 	else if (ft_memchr(temp->mod, '-', 5) == 0 && \
 			(temp->prec == -1 || temp->flag == 'c') && temp->width > -1)

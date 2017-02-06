@@ -20,7 +20,12 @@ void	clcsls(va_list ap, struct s_lis *temp, wchar_t *tmp)
 	if (temp->flag == 'S' || temp->flag == 's')
 		temp->lsc = (wchar_t *)va_arg(ap, int *);
 	if (temp->flag == 'C' || temp->flag == 'c')
-		tmp[0] = (wchar_t)va_arg(ap, int);
+	{
+		tmp[0] = (wchar_t) va_arg(ap, int);
+		if (tmp[0] > 127)
+			tmp[0] = 65533;
+		tmp[1] = '\0';
+	}
 	if (temp->flag != 'C')
 		while (++i < temp->prec)
 			tmp[i] = temp->lsc[i];

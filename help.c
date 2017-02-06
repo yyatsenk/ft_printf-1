@@ -23,7 +23,7 @@ void	clcsls(va_list ap, struct s_lis *temp, wchar_t *tmp)
 	{
 		tmp[0] = (wchar_t) va_arg(ap, int);
 		if (tmp[0] > 127)
-			tmp[0] = 65533;
+			tmp[0] = "�";
 		tmp[1] = '\0';
 	}
 	if (temp->flag != 'C')

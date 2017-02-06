@@ -75,8 +75,7 @@ char	*width(struct s_lis *temp, char *str)
 	{
 		ret = ft_strnew(temp->width - ft_strlen(str));
 		if (str[0] > 47 && str[0] < 58 && ft_memchr(temp->mod, ' ', 5) && \
-		temp->flag != 'u' && temp->flag != 'U' && temp->prec < 0 && \
-		str[ft_strlen(str)] == '0')
+		temp->flag != 'u' && temp->flag != 'U' && temp->prec < 0)
 			i = temp->width - (int)ft_strlen(str) - 1;
 		else
 			i = temp->width - (int)ft_strlen(str);
